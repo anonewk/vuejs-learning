@@ -8,7 +8,7 @@
     <script type="text/javascript" src="./node_modules/vue/dist/vue.js"></script>
 </head>
 <body>
-<div id="app">
+<div id="app" class="app">
     <h1>{{ restaurantName }}</h1>
     <p class="description">
         Bienvenue dans notre café {{ restaurantName }} ! Nous sommes réputés pour notre
@@ -16,8 +16,28 @@
         ou avec un goûter réconfortant. Mais attention, vous verrez qu'il est
         difficile de s'arrêter.
     </p>
+    <div>
+        <h2>Pannier</h2>
+        <ul>
+            <li>{{ costOfApples }} €</li>
+            <li>{{ costOfBananas }} €</li>
+            <li>{{ costOfCoconuts }} €</li>
+        </ul>
+        <p>{{ totalPrice }} €</p>
+
+        <h2>Contactez nous</h2>
+        <p>Adresse : {{ address}}</p>
+        <p>Téléphone : {{ mobilePhone }}</p>
+        <p>Email : {{ email }}</p>
+        <p>Horaires :</p>
+        <ul>
+            <li>L-V: 06:00 à 16:00</li>
+            <li>Samedi: 07:00 à 14:00</li>
+            <li>Dimanche: 07:00 à 12:00</li>
+        </ul>
+    </div>
     <footer class="footer">
-        <p>Copyright {{ restaurantName }} 2020</p>
+        <p>{{ copyright }}</p>
     </footer>
 </div>
 
@@ -26,7 +46,23 @@
     const app = new Vue({
         el: '#app',
         data: {
-            restaurantName: 'Terre d\'Avalonne'
+            restaurantName: 'Terre d\'Avalonne',
+            costOfApples: 6,
+            costOfBananas: 2,
+            costOfCoconuts: 8,
+            mobilePhone: '01 88 88 88 88',
+            email: 'hello@cafewithavue.bakery',
+            address: '18 avenue du Beurre, Paris, France'
+        },
+        computed: {
+          totalPrice(){
+              return this.costOfApples + this.costOfBananas + this.costOfCoconuts
+          },
+            copyright() {
+                const currentYear = new Date().getFullYear()
+
+                return `Copyright ${this.restaurantName} ${currentYear}`
+            }
         }
     })
 </script>
