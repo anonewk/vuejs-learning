@@ -8,12 +8,11 @@ Ce repo contient le code d'apprentissage pour Créer une application avec Vue.js
 	Définissez où Vue devrait apparaître sur votre page
 	Apprenez à stocker des données
 
-
 Partie 1: Créez votre première app Vue.js
 
-Content 	Subject
+Content---|---Subject
 
-Chapitre 2      Création de notre première app avec Vue
+Chapitre 2 Création de notre première app avec Vue
 
               - Découvrez le monde des applications monopages
               - Découvrez notre framework : Vue
@@ -21,14 +20,14 @@ Chapitre 2      Création de notre première app avec Vue
               - Définissez où Vue devrait apparaître sur votre page
               - Apprenez à stocker des données
 			  
-Chapitre 3 	Stockez et gérer les données
+Chapitre 3 Stockez et gérer les données
 
               - Gardez vos données à jour
               - Découvrez les données réactives
               - Faites le lien entre les données réactives et Vue
               - Découvrez les propriétés calculées
 			  
-Chapitre 4      Utilisez les directives Vue pour gérer des problèmes courants 
+Chapitre 4 Utilisez les directives Vue pour gérer des problèmes courants 
 
               - Découvrez ce qu’est une directive
               - Conditionnez l'affichage du contenu
