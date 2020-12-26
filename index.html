@@ -16,26 +16,41 @@
         ou avec un goûter réconfortant. Mais attention, vous verrez qu'il est
         difficile de s'arrêter.
     </p>
-    <div>
-        <h2>Pannier</h2>
-        <ul>
-            <li>{{ costOfApples }} €</li>
-            <li>{{ costOfBananas }} €</li>
-            <li>{{ costOfCoconuts }} €</li>
-        </ul>
-        <p>{{ totalPrice }} €</p>
+    <section class="menu">
+        <h2>Menu</h2>
+        <div class="menu-item" v-for="item in simpleMenu">
+            <img
+                    class="menu-item__image"
+                    :src="item.image.source"
+                    :alt="item.image.alt"
+            />
+            <div>
+                <h3>{{ item.name }}</h3>
+                <p v-if="item.inStock">En stock</p>
+                <p v-else>En rupture de stock</p>
+                <div>
+                    <label for="add-item-quantity">Quantité : {{ item.quantity}}</label>
+                    <input id="add-item-quantity" type="number" v-model.number="item.quantity"/>
+                    <button @click="addToShoppingCart(item.quantity)">Ajouter au panier d'achat</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <h2>Contactez nous</h2>
-        <p>Adresse : {{ address}}</p>
-        <p>Téléphone : {{ mobilePhone }}</p>
-        <p>Email : {{ email }}</p>
-        <p>Horaires :</p>
-        <ul>
-            <li>L-V: 06:00 à 16:00</li>
-            <li>Samedi: 07:00 à 14:00</li>
-            <li>Dimanche: 07:00 à 12:00</li>
-        </ul>
-    </div>
+    <aside class="shopping-cart">
+        <h2>Panier d'achat: {{ total }} articles</h2>
+    </aside>
+
+    <h2>Contactez nous</h2>
+    <p>Adresse : {{ address }}</p>
+    <p>Téléphone : {{ phone }}</p>
+    <p>Email : {{ email }}</p>
+    <p>Horaires :</p>
+    <ul>
+        <li>L-V: 06:00 à 16:00</li>
+        <li>Samedi: 07:00 à 14:00</li>
+        <li>Dimanche: 07:00 à 12:00</li>
+    </ul>
     <footer class="footer">
         <p>{{ copyright }}</p>
     </footer>
@@ -47,22 +62,54 @@
         el: '#app',
         data: {
             restaurantName: 'Terre d\'Avalonne',
-            costOfApples: 6,
-            costOfBananas: 2,
-            costOfCoconuts: 8,
-            mobilePhone: '01 88 88 88 88',
+            simpleMenu: [
+                {
+                    name: "Croissant",
+                    image: {
+                        source: "./pictures/croissant.jpg",
+                        alt: "Un croissant"
+                    },
+                    inStock: true,
+                    quantity: 1
+                },
+                {
+                    name: "Baguette de pain",
+                    image: {
+                        source: "./pictures/french-baguette.jpg",
+                        alt: "Quatre baguettes de pain"
+                    },
+                    inStock: true,
+                    quantity: 1
+                },
+                {
+                    name: "Éclair",
+                    image: {
+                        source: "./pictures/eclair.jpg",
+                        alt: "Éclair au chocolat"
+                    },
+                    inStock: false,
+                    quantity: 1
+                }
+            ],
+            phone: '01 88 88 88 88',
             email: 'hello@cafewithavue.bakery',
-            address: '18 avenue du Beurre, Paris, France'
+            address: '18 avenue du Beurre, Paris, France',
+            showModal: false,
+            total: 0,
         },
         computed: {
-          totalPrice(){
-              return this.costOfApples + this.costOfBananas + this.costOfCoconuts
-          },
             copyright() {
                 const currentYear = new Date().getFullYear()
 
                 return `Copyright ${this.restaurantName} ${currentYear}`
             }
+        },
+        methods: {
+            addToShoppingCart(amount){
+                return this.total += amount
+            }
+
+
         }
     })
 </script>
