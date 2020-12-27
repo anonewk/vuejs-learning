@@ -3,16 +3,29 @@
     <h1>Hello new learning</h1>
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
+
+    <p>Bienvenue sur notre page d'<HomeLink></HomeLink></p>
+
+    <nav>
+      <NavLink url="/" text="Accueil" />
+      <NavLink url="/about" text="À propos" />
+      <NavLink url="/contact" text="Contact" />
+    </nav>
+
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from '@/components/HelloWorld.vue'
+import HomeLink from "@/components/HomeLink";
+import NavLink from "@/components/NavLink";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HelloWorld,
+    HomeLink,
+    NavLink
   }
 }
 </script>
