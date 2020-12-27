@@ -1,14 +1,13 @@
-
 <script>
 export default {
-  name: "MenuItem",
+  name: "MenuProduct",
   props: ["addToShoppingCart", "image", "inStock", "name", "quantity"]
 }
 </script>
 
 <template>
   <div class="menu-item">
-    <img class="menu-item__image" :src="image" :alt="image.alt" />
+    <img class="menu-item__image" :src="image.source" :alt="image.alt" />
     <div>
       <h3>{{ name }}</h3>
       <p v-if="inStock">En stock</p>
